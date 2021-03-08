@@ -1,0 +1,27 @@
+{
+  "name": "attus/mediawiki-api",
+  "description": "A basic PHP MediaWiki API",
+  "keywords": [
+    "MediaWiki"
+  ],
+  "homepage": "https://github.com/attus74/mediawiki-api",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Attila Németh",
+      "email": "attus@germanicus.hu",
+      "role": "developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/attus74/mediawiki-api/issues"
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^6.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Attus\\MediaWikiApi\\": "src/"
+    }
+  }
+}
