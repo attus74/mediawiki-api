@@ -8,6 +8,6 @@ namespace Attus\MediaWikiApi\Exception;
  * @author Attila Németh
  * 08.03.02021
  */
-interface MediaWikiApiExceptionInterface extends \Exception {
+interface MediaWikiApiExceptionInterface {
   
 }

@@ -93,13 +93,23 @@ class Image extends QueryBase {
       throw new NotFoundMediaWikiException('Not Found: ' . $this->_title);
     }
     foreach($response->pages as $page) {
-      foreach($response->pages as $page) {
-        foreach($page->imageinfo as $info) {
-          $this->_width = $info->width;
-          $this->_height = $info->height;
-          $this->_pageUrl = $info->descriptionurl;
-          $this->_user = $info->user;
+      foreach($page->imageinfo as $info) {
+        $this->_width = $info->width;
+        $this->_height = $info->height;
+        $this->_pageUrl = $info->descriptionurl;
+        $this->_user = $info->user;
+        if ($info->width >= $info->height || $info->thumbheight <= $width) {
           return $info->thumburl;
+        }
+        else {
+          $calculatedWidth = $width / $info->height * $info->width;
+          $this->_addParam('iiurlwidth', $calculatedWidth);
+          $calculatedResponse = $this->_get();
+          foreach($calculatedResponse->pages as $calculatedPage) {
+            foreach($calculatedPage->imageinfo as $calculatedInfo) {
+              return $calculatedInfo->thumburl;
+            }
+          }
         }
       }
     }
