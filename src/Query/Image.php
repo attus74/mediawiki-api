@@ -102,7 +102,7 @@ class Image extends QueryBase {
           return $info->thumburl;
         }
         else {
-          $calculatedWidth = $width / $info->height * $info->width;
+          $calculatedWidth = round($width / $info->height * $info->width, 0);
           $this->_addParam('iiurlwidth', $calculatedWidth);
           $calculatedResponse = $this->_get();
           foreach($calculatedResponse->pages as $calculatedPage) {
